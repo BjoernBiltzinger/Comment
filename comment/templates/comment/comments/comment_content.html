@@ -36,18 +36,19 @@
             {% if user|can_block_users %}
                 {% include 'comment/block/block_icon.html' %}
             {% endif %}
-            {% if comment.is_parent %}
+                {% if comment.get_level < 4 %}
                 {% get_replies_count comment user as reply_count %}
-                | <span class="js-reply-number {% block reply_count_cls %}text-dark{% endblock reply_count_cls %}">{{ reply_count }}</span>
-                <a class="js-reply-link {% block reply_link_cls %}btn btn-link ml-1{% endblock reply_link_cls %}" href="#">
+                | <span class="js-reply-number {% block reply_count_cls %}text-dark{% endblock reply_count_cls %}">{{ reply_count }} level:{{ comment.get_level }}</span>
+                <a class="js-reply-link btn btn-link" href="#">
                     {% blocktrans count reply_count=reply_count %} Reply{% plural %} Replies{% endblocktrans %}
                 </a>
+
                 {% if comment.user == user and is_subscription_allowed %}
                     <div class="{% block follow_icon_wrapper_cls %}d-inline ml-3{% endblock follow_icon_wrapper_cls %}">
                         {% include 'comment/follow/follow.html' with model_object=comment btnId=comment.id %}
                     </div>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
         </small>
         {% include "comment/reactions/reactions.html" with comment=comment %}
     </div>

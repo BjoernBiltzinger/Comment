@@ -14,7 +14,9 @@ from comment.utils import is_comment_moderator
 class Comment(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, blank=True, null=True)
     email = models.EmailField(blank=True)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
+                               related_name="child")
+
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
@@ -109,7 +111,7 @@ class Comment(models.Model):
 
     @property
     def is_parent(self):
-        return self.parent is None
+        return len(self.child.all()) > 0
 
     @property
     def is_edited(self):
@@ -148,3 +150,10 @@ class Comment(models.Model):
         if hasattr(self, 'flag'):
             return self.flag.state == self.flag.RESOLVED
         return False
+
+    @property
+    def get_level(self):
+        if self.parent is None:
+            return 1
+        else:
+            return self.parent.get_level+1
