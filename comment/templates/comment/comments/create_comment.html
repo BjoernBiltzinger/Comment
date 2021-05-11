@@ -1,5 +1,6 @@
 {% load comment_tags %}
 {% load i18n %}
+{% trans 'reply to this comment...' as placeholder %}
 {% if is_anonymous_allowed or user.is_authenticated %}
     <form class="js-comment-form" method="post" data-url="{% url 'comment:create' %}">
         {% csrf_token %}
