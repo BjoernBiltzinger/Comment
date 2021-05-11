@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
                 let childComment = stringToDom(result.data, '.js-child-comment');
-                form.parentNode.insertBefore(childComment, form);
+                form.parentNode.insertBefore(childComment, form.nextSibling);
                 // update number of replies
                 let reply = form.parentElement.previousElementSibling.querySelector(".js-reply-link");
                 let replyNumberElement = form.parentElement.previousElementSibling.querySelector(".js-reply-number");
