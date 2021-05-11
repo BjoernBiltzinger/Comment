@@ -38,7 +38,7 @@
             {% endif %}
                 {% if comment.get_level < 4 %}
                 {% get_replies_count comment user as reply_count %}
-                | <span class="js-reply-number {% block reply_count_cls %}text-dark{% endblock reply_count_cls %}">{{ reply_count }} level:{{ comment.get_level }}</span>
+                | <span class="js-reply-number {% block reply_count_cls %}text-dark{% endblock reply_count_cls %}">{{ reply_count }}</span>
                 <a class="js-reply-link btn btn-link" href="#">
                     {% blocktrans count reply_count=reply_count %} Reply{% plural %} Replies{% endblocktrans %}
                 </a>
