@@ -110,7 +110,8 @@ class Comment(models.Model):
         return page_url + '#' + self.urlhash
 
     @property
-    def is_parent(self):
+    def is_base(self):
+        return self.parent is None
         return len(self.child.all()) > 0
 
     @property

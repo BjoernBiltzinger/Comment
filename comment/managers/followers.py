@@ -31,7 +31,7 @@ class FollowerManager(models.Manager):
             return
         username = comment.get_username()
         model_object = comment
-        if not comment.is_parent:
+        if not comment.is_base:
             model_object = comment.parent
         else:
             # follow the main thread for parent comment

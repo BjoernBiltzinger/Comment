@@ -22,7 +22,7 @@ class CreateComment(CanCreateMixin, CommentCreateMixin):
         return context
 
     def get_template_names(self):
-        if self.request.user.is_anonymous or self.comment.is_parent:
+        if self.request.user.is_anonymous or self.comment.is_base:
             return 'comment/comments/base.html'
         else:
             return 'comment/comments/child_comment.html'
@@ -84,7 +84,7 @@ class DeleteComment(CanDeleteMixin, BaseCommentView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data()
         context["comment"] = self.comment
-        context['has_parent'] = not self.comment.is_parent
+        context['has_parent'] = not self.comment.is_base
         self.data = render_to_string('comment/comments/comment_modal.html', context, request=request)
         return UTF8JsonResponse(self.json())
 

@@ -63,12 +63,12 @@ class DABEmailService(object):
         self.send_messages([msg])
 
     def get_thread(self):
-        if self.comment.is_parent:
+        if self.comment.is_base:
             return self.comment.content_object
         return self.comment.parent
 
     def get_thread_name(self):
-        if self.comment.is_parent:
+        if self.comment.is_base:
             return str(self.comment.content_object)
         return str(self.comment.parent).split(':')[0]
 

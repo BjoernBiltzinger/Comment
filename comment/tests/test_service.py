@@ -146,7 +146,7 @@ class TestDABEmailService(BaseAnonymousCommentTest):
 
     def test_get_thread_for_parent_comment(self):
         """The content type (Post, Picture...) is the parent thread of a parent comment"""
-        self.assertTrue(self.email_service.comment.is_parent)
+        self.assertTrue(self.email_service.comment.is_base)
         thread = self.email_service.get_thread()
 
         self.assertIs(thread, self.email_service.comment.content_object)
@@ -154,23 +154,23 @@ class TestDABEmailService(BaseAnonymousCommentTest):
 
     def test_get_thread_for_child_comment(self):
         """The parent comment is the parent thread of a child comment"""
-        self.assertFalse(self.child_comment.is_parent)
+        self.assertFalse(self.child_comment.is_base)
         email_service = DABEmailService(self.child_comment, self.request)
-        self.assertFalse(email_service.comment.is_parent)
+        self.assertFalse(email_service.comment.is_base)
         thread = email_service.get_thread()
 
         self.assertIsNot(thread, email_service.comment.content_object)
         self.assertIs(thread, email_service.comment.parent)
 
     def test_get_thread_name_for_parent_comment(self):
-        self.assertTrue(self.email_service.comment.is_parent)
+        self.assertTrue(self.email_service.comment.is_base)
         thread_name = self.email_service.get_thread_name()
 
         self.assertEqual(thread_name, str(self.email_service.comment.content_object))
 
     def test_get_thread_name_for_child_comment(self):
         email_service = DABEmailService(self.child_comment, self.request)
-        self.assertFalse(email_service.comment.is_parent)
+        self.assertFalse(email_service.comment.is_base)
         thread_name = email_service.get_thread_name()
 
         self.assertEqual(thread_name, str(email_service.comment.parent).split(':')[0])

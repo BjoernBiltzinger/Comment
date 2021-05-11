@@ -69,14 +69,14 @@ class BaseCommentSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def get_replies(obj):
-        if obj.is_parent:
+        if obj.is_base:
             return CommentSerializer(obj.replies(), many=True).data
         else:
             return []
 
     @staticmethod
     def get_reply_count(obj):
-        if obj.is_parent:
+        if obj.is_base:
             return obj.replies().count()
         else:
             return 0

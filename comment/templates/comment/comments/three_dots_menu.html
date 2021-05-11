@@ -1,4 +1,4 @@
-{% if allowed_flags and is_subscription_allowed and comment.is_parent %}
+{% if allowed_flags and is_subscription_allowed and comment.is_base %}
     <div class="js-three-dots three-dots-wrapper">
         <div class="three-dots"></div>
         <div class="three-dots"></div>
@@ -20,7 +20,7 @@
             {% include "comment/flags/flags.html" %}
         </div>
     {% endif %}
-    {% if comment.is_parent and is_subscription_allowed %}
+    {% if comment.is_base and is_subscription_allowed %}
         <div class="ml-4">
             {% include 'comment/follow/follow.html' with model_object=comment btnId=comment.id %}
         </div>

@@ -20,7 +20,7 @@ class CommentModelTest(BaseCommentManagerTest):
         self.assertIsNotNone(comment)
         self.assertEqual(str(comment), f'comment by {comment.user}: {comment.content[:20]}')
         self.assertEqual(repr(comment), f'comment by {comment.user}: {comment.content[:20]}')
-        self.assertTrue(comment.is_parent)
+        self.assertTrue(comment.is_base)
         self.assertEqual(comment.replies().count(), 0)
         self.assertIsNotNone(comment.urlhash)
 
@@ -30,7 +30,7 @@ class CommentModelTest(BaseCommentManagerTest):
         self.assertIsNotNone(comment)
         self.assertEqual(str(comment), f'reply by {comment.user}: {comment.content[:20]}')
         self.assertEqual(repr(comment), f'reply by {comment.user}: {comment.content[:20]}')
-        self.assertFalse(comment.is_parent)
+        self.assertFalse(comment.is_base)
         self.assertEqual(self.parent_comment.replies().count(), 1)
         self.assertIsNotNone(comment.urlhash)
 

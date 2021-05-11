@@ -57,7 +57,7 @@ class CommentViewTestCase(BaseCommentViewTest):
         parent_comment = Comment.objects.get(object_id=self.post_1.id, parent=None)
 
         self.assertEqual(response.context.get('comment').id, parent_comment.id)
-        self.assertTrue(response.context.get('comment').is_parent)
+        self.assertTrue(response.context.get('comment').is_base)
 
         self.increase_count(parent=True)
         self.comment_count_test()
@@ -80,7 +80,7 @@ class CommentViewTestCase(BaseCommentViewTest):
 
         child_comment = Comment.objects.get(object_id=self.post_1.id, parent=parent_comment)
         self.assertEqual(response.context.get('comment').id, child_comment.id)
-        self.assertFalse(response.context.get('comment').is_parent)
+        self.assertFalse(response.context.get('comment').is_base)
 
         self.increase_count()
         self.comment_count_test()
