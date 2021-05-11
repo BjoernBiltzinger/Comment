@@ -90,6 +90,7 @@ class Flag(models.Model):
     def toggle_flagged_state(self):
         allowed_flags = settings.COMMENT_FLAGS_ALLOWED
         if not allowed_flags:
+            self.state = self.UNFLAGGED
             return
         self.refresh_from_db()
         if self.count > allowed_flags and self.state not in [self.RESOLVED, self.REJECTED]:
