@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-11 08:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: comment/static/js/comment.js:166 comment/static/js/comment.js:331
+msgid "Replies"
+msgstr ""
+
+#: comment/static/js/comment.js:168 comment/static/js/comment.js:333
+msgid "Reply"
+msgstr ""
+
+#: comment/static/js/comment.js:191
+msgid "Unable to post your comment!, please try again"
+msgstr ""
+
+#: comment/static/js/comment.js:217
+msgid "You can't edit this comment"
+msgstr ""
+
+#: comment/static/js/comment.js:245
+msgid "Modification didn't take effect!, please try again"
+msgstr ""
+
+#: comment/static/js/comment.js:294
+msgid "Deletion cannot be performed!, please try again"
+msgstr ""
+
+#: comment/static/js/comment.js:341
+msgid "Unable to delete your comment!, please try again"
+msgstr ""
+
+#: comment/static/js/comment.js:407
+msgid "Reaction couldn't be processed!, please try again"
+msgstr ""
+
+#: comment/static/js/comment.js:444 comment/static/js/comment.js:450
+msgid "${result.data.model_object}"
+msgstr ""
+
+#: comment/static/js/comment.js:456
+msgid "Subscription couldn't be processed!, please try again"
+msgstr ""
+
+#: comment/static/js/comment.js:507
+msgid "Blocking this user couldn't be processed!, please try again"
+msgstr ""
+
+#: comment/static/js/comment.js:620
+msgid "Flagging couldn't be processed!, please try again"
+msgstr ""
+
+#: comment/static/js/comment.js:666
+msgid "read more ..."
+msgstr ""
+
+#: comment/static/js/comment.js:668
+msgid "read less"
+msgstr ""
+
+#: comment/static/js/comment.js:701
+msgid "Flag rejected"
+msgstr ""
+
+#: comment/static/js/comment.js:702 comment/static/js/comment.js:720
+msgid "Reject the flag"
+msgstr ""
+
+#: comment/static/js/comment.js:707 comment/static/js/comment.js:715
+msgid "Resolve the flag"
+msgstr ""
+
+#: comment/static/js/comment.js:714
+msgid "Flag resolved"
+msgstr ""

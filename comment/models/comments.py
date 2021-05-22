@@ -12,10 +12,11 @@ from comment.utils import is_comment_moderator
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, blank=True, null=True,
+                             related_name="comment")
     email = models.EmailField(blank=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
-                               related_name="child")
+                               related_name="child", default=None)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
@@ -28,7 +29,7 @@ class Comment(models.Model):
         )
     posted = models.DateTimeField(default=timezone.now, editable=False)
     edited = models.DateTimeField(auto_now=True)
-
+    deleted = models.BooleanField(default=False)
     objects = CommentManager()
 
     class Meta:
@@ -158,3 +159,7 @@ class Comment(models.Model):
             return 1
         else:
             return self.parent.get_level+1
+
+    @property
+    def num_childs(self):
+        return self.child.count()

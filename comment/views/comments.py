@@ -84,11 +84,17 @@ class DeleteComment(CanDeleteMixin, BaseCommentView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data()
         context["comment"] = self.comment
-        context['has_parent'] = not self.comment.is_base
+        context['has_parent'] = self.comment.get_level > 1 #not self.comment.is_base
         self.data = render_to_string('comment/comments/comment_modal.html', context, request=request)
         return UTF8JsonResponse(self.json())
 
     def post(self, request, *args, **kwargs):
+        # Set the deleted flag, so that we can
+        # display a "message deleted" message but still
+        # show the replies to the original message
+        #self.comment.deleted = True
+        #print(self.comment.deleted)
+        #self.comment.save()
         self.comment.delete()
         context = self.get_context_data()
         self.data = render_to_string('comment/comments/base.html', context, request=self.request)

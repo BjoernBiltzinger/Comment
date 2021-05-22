@@ -6,7 +6,7 @@ from comment.models import ReactionInstance, FlagInstance, Follower, BlockedUser
 from comment.forms import CommentForm
 from comment.utils import (
     is_comment_moderator, is_comment_admin, get_gravatar_img, get_profile_instance, get_wrapped_words_number,
-    can_block_user
+    can_block_user, get_user_for_request
 )
 from comment.managers import FlagInstanceManager
 from comment.messages import ReactionError
@@ -64,7 +64,18 @@ def get_comments_count(obj, user):
 
 @register.simple_tag(name='get_comment_replies')
 def get_comment_replies(comment, user):
-    return comment.replies(include_flagged=is_comment_moderator(user))
+    if is_comment_moderator(user):
+        comments = comment.replies(include_flagged=True)
+    else:
+        comments1 = comment.replies(include_flagged=False)
+        comments2 = comment.replies(include_flagged=True).exclude(child=None)
+        if get_profile_instance(user) is not None:
+            comments3 = comment.replies(include_flagged=True).filter(user=user)
+            comments = comments1 | comments2 | comments3
+        else:
+            comments = comments1 | comments2
+    return comments
+    #return comment.replies(include_flagged=is_comment_moderator(user))
 
 
 @register.simple_tag(name='get_replies_count')
@@ -88,22 +99,27 @@ def render_comments(obj, request, oauth=False):
 register.inclusion_tag('comment/base.html')(render_comments)
 
 
-def render_content(comment, number=None):
-    try:
-        number = int(number)
-    except (ValueError, TypeError):
-        number = get_wrapped_words_number()
-
-    # Restrict 2 or more line breaks to 2 <br>
-    content = MULTIPLE_NEW_LINE_RE.sub(r'\1<br><br>\3', comment.content)
-    content = SINGLE_NEW_LINE_RE.sub(r'\1<br>\3', content)
-    content_words = content.split()
-    if not number or len(content_words) <= number:
-        text_1 = content
+def render_content(comment, user, number=None):
+    # check if this comment is deleted
+    if comment.has_flagged_state and not is_comment_moderator(user) and user != comment.user:
+        text_1 = "-------Comment deleted---------"
         text_2 = None
     else:
-        text_1 = ' '.join(content_words[:number])
-        text_2 = ' '.join(content_words[number:])
+        try:
+            number = int(number)
+        except (ValueError, TypeError):
+            number = get_wrapped_words_number()
+
+        # Restrict 2 or more line breaks to 2 <br>
+        content = MULTIPLE_NEW_LINE_RE.sub(r'\1<br><br>\3', comment.content)
+        content = SINGLE_NEW_LINE_RE.sub(r'\1<br>\3', content)
+        content_words = content.split()
+        if not number or len(content_words) <= number:
+            text_1 = content
+            text_2 = None
+        else:
+            text_1 = ' '.join(content_words[:number])
+            text_2 = ' '.join(content_words[number:])
 
     return {
         'text_1': text_1,

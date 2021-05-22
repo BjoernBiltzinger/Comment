@@ -695,6 +695,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let commentBodyElement = getNthParent(changeStateButton, 3);
             commentBodyElement.classList.add('flagged-comment');
             let title = '';
+
+            console.log(result);
             if (state === 3) {
                 changeStateButton.firstElementChild.classList.toggle("flag-rejected");
                 title = changeStateButton.firstElementChild.classList.contains("flag-rejected")

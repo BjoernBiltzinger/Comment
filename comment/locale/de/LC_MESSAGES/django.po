@@ -1,0 +1,576 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-11 08:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: comment/apps.py:8
+msgid "comment"
+msgstr ""
+
+#: comment/conf/defaults.py:14
+msgid "Spam | Exists only to promote a service"
+msgstr ""
+
+#: comment/conf/defaults.py:15
+msgid "Abusive | Intended at promoting hatred"
+msgstr ""
+
+#: comment/managers/flags.py:23
+msgid "Something else"
+msgstr ""
+
+#: comment/messages.py:7
+msgid "Comment App: LOGIN_URL is not in the settings"
+msgstr ""
+
+#: comment/messages.py:8
+msgid "Comment App: You must be logged in to perform this action."
+msgstr ""
+
+#: comment/messages.py:9
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: comment/messages.py:10
+#, python-brace-format
+msgid ""
+"Your {class_name} class has not defined a {method_name} method, which is "
+"required."
+msgstr ""
+
+#: comment/messages.py:11
+msgid "Only AJAX request are allowed"
+msgstr ""
+
+#: comment/messages.py:20
+msgid "Comment App: settings var COMMENT_WRAP_CONTENT_WORDS must be an integer"
+msgstr ""
+
+#: comment/messages.py:24
+msgid "error"
+msgstr ""
+
+#: comment/messages.py:25
+msgid "Bad Request"
+msgstr ""
+
+#: comment/messages.py:29
+#, python-brace-format
+msgid "{var_name} id must be an integer, {id} is NOT"
+msgstr ""
+
+#: comment/messages.py:30
+msgid "app name must be provided"
+msgstr ""
+
+#: comment/messages.py:31
+#, python-brace-format
+msgid "{app_name} is NOT a valid app name"
+msgstr ""
+
+#: comment/messages.py:32
+msgid "model name must be provided"
+msgstr ""
+
+#: comment/messages.py:33
+#, python-brace-format
+msgid "{model_name} is NOT a valid model name"
+msgstr ""
+
+#: comment/messages.py:34
+msgid "model id must be provided"
+msgstr ""
+
+#: comment/messages.py:35
+#, python-brace-format
+msgid "{model_id} is NOT a valid model id for the model {model_name}"
+msgstr ""
+
+#: comment/messages.py:36
+#, python-brace-format
+msgid ""
+"{parent_id} is NOT a valid id for a parent comment or the parent comment "
+"does NOT belong to the provided model object"
+msgstr ""
+
+#: comment/messages.py:41
+msgid "Flagging system must be enabled"
+msgstr ""
+
+#: comment/messages.py:42
+msgid "Object must be flagged!"
+msgstr ""
+
+#: comment/messages.py:43
+#, python-brace-format
+msgid "{state} is an invalid state"
+msgstr ""
+
+#: comment/messages.py:44
+#, python-brace-format
+msgid "{reason} is an invalid reason"
+msgstr ""
+
+#: comment/messages.py:45
+msgid "Please supply some information as the reason for flagging"
+msgstr ""
+
+#: comment/messages.py:46
+#, python-brace-format
+msgid "This comment is already flagged by this user ({user})"
+msgstr ""
+
+#: comment/messages.py:47
+#, python-brace-format
+msgid "This comment was not flagged by this user ({user})"
+msgstr ""
+
+#: comment/messages.py:48
+msgid "This action cannot be applied on unflagged comments"
+msgstr ""
+
+#: comment/messages.py:49
+msgid "The comment must be edited before resolving the flag"
+msgstr ""
+
+#: comment/messages.py:50
+msgid "Unable to change flag state at the moment!"
+msgstr ""
+
+#: comment/messages.py:54
+#, python-brace-format
+msgid ""
+"Reaction must be an valid ReactionManager.RelationType. {reaction_type} is "
+"not"
+msgstr ""
+
+#: comment/messages.py:58
+msgid "Enter a valid email address."
+msgstr ""
+
+#: comment/messages.py:59
+msgid "Email is required for posting anonymous comments."
+msgstr ""
+
+#: comment/messages.py:60
+msgid "The link seems to be broken."
+msgstr ""
+
+#: comment/messages.py:61
+msgid "The comment has already been verified."
+msgstr ""
+
+#: comment/messages.py:65
+msgid "Comment flagged"
+msgstr ""
+
+#: comment/messages.py:66
+msgid "Comment flag removed"
+msgstr ""
+
+#: comment/messages.py:70
+msgid "Your reaction has been updated successfully"
+msgstr ""
+
+#: comment/messages.py:74
+msgid "Comment Confirmation Request"
+msgstr ""
+
+#: comment/messages.py:75
+msgid ""
+"We have sent a verification link to your email.The comment will be displayed "
+"after it is verified."
+msgstr ""
+
+#: comment/messages.py:77
+msgid "email address, this will be used for verification."
+msgstr ""
+
+#: comment/messages.py:78
+msgid "email address, it will be used for verification."
+msgstr ""
+
+#: comment/messages.py:79
+#, python-brace-format
+msgid "{username} added comment to \"{thread_name}\""
+msgstr ""
+
+#: comment/messages.py:80
+msgid "email"
+msgstr ""
+
+#: comment/messages.py:84
+msgid "Unflagged"
+msgstr ""
+
+#: comment/messages.py:85
+msgid "Flagged"
+msgstr ""
+
+#: comment/messages.py:86
+msgid "Flag rejected by the moderator"
+msgstr ""
+
+#: comment/messages.py:87
+msgid "Comment modified by the author"
+msgstr ""
+
+#: comment/messages.py:91
+#, python-brace-format
+msgid "Email is required to subscribe {model_object}"
+msgstr ""
+
+#: comment/messages.py:92
+msgid "Subscribe system must be enabled"
+msgstr ""
+
+#: comment/messages.py:96
+msgid "Unblocked"
+msgstr ""
+
+#: comment/messages.py:97
+msgid "Blocked"
+msgstr ""
+
+#: comment/messages.py:102
+msgid "Invalid input data"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:8
+#: comment/templates/comment/anonymous/confirmation_request.txt:2
+msgid "Hey there,"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:10
+msgid ""
+"You or someone on your behalf have requested to post a comment into this "
+"page:"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:12
+#, python-format
+msgid "at %(posted_time)s."
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:15
+#: comment/templates/comment/notifications/notification.html:27
+msgid "The comment:"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:20
+#: comment/templates/comment/anonymous/confirmation_request.txt:12
+msgid ""
+"If you do not wish to post the comment, please ignore this message or report "
+"an incident to"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:20
+msgid "Otherwise click on the button below to confirm the comment."
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:29
+msgid "Confirm your comment"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:38
+msgid ""
+"If clicking does not work, you can also copy the below link and paste the "
+"address into your browser's address window"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:41
+#: comment/templates/comment/anonymous/confirmation_request.txt:17
+#: comment/templates/comment/notifications/notification.html:32
+#: comment/templates/comment/notifications/notification.txt:14
+msgid "Thanks for your comment!"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.html:43
+#: comment/templates/comment/anonymous/confirmation_request.txt:20
+#: comment/templates/comment/notifications/notification.html:34
+#: comment/templates/comment/notifications/notification.txt:17
+msgid "Kind regards,"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.txt:4
+msgid "You or someone on behalf of you have requested to post a comment at"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.txt:4
+msgid "to the following URL"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.txt:8
+#: comment/templates/comment/comments/create_comment.html:20
+#: comment/templates/comment/notifications/notification.txt:6
+msgid "Comment"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.txt:12
+msgid "Otherwise click on the link below to confirm the comment"
+msgstr ""
+
+#: comment/templates/comment/anonymous/confirmation_request.txt:16
+#: comment/templates/comment/notifications/notification.html:31
+#: comment/templates/comment/notifications/notification.txt:13
+msgid ""
+"If clicking does not work, you can also copy and paste the address into your "
+"browser's address window"
+msgstr ""
+
+#: comment/templates/comment/anonymous/discarded.html:7
+msgid "Comment discarded"
+msgstr ""
+
+#: comment/templates/comment/anonymous/discarded.html:13
+msgid "Comment can't be verified."
+msgstr ""
+
+#: comment/templates/comment/anonymous/discarded.html:14
+msgid "Sorry, your comment has been automatically discarded."
+msgstr ""
+
+#: comment/templates/comment/block/block_icon.html:4
+msgid "Unblock user"
+msgstr ""
+
+#: comment/templates/comment/block/block_icon.html:4
+msgid "Block this user"
+msgstr ""
+
+#: comment/templates/comment/block/block_modal.html:6
+msgid "Are you sure you want to block this user?"
+msgstr ""
+
+#: comment/templates/comment/block/block_modal.html:7
+#: comment/templates/comment/comments/comment_modal.html:7
+#: comment/templates/comment/comments/comment_modal.html:15
+#: comment/templates/comment/flags/flag_modal.html:8
+#: comment/templates/comment/follow/follow_modal.html:8
+msgid "Close"
+msgstr ""
+
+#: comment/templates/comment/block/block_modal.html:16
+msgid "Reason"
+msgstr ""
+
+#: comment/templates/comment/block/block_modal.html:27
+msgid "Block"
+msgstr ""
+
+#: comment/templates/comment/comments/base.html:8
+msgid "Comments"
+msgstr ""
+
+#: comment/templates/comment/comments/base.html:17
+msgid "comment on this post..."
+msgstr "Schreibe einen Kommentar hierzu..."
+
+#: comment/templates/comment/comments/base.html:21
+msgid "reply to this comment..."
+msgstr ""
+
+#: comment/templates/comment/comments/comment_content.html:14
+#, python-format
+msgid "view %(username)s profile"
+msgstr ""
+
+#: comment/templates/comment/comments/comment_content.html:14
+msgid "comment by anonymous user"
+msgstr ""
+
+#: comment/templates/comment/comments/comment_content.html:19
+msgid "Edited"
+msgstr ""
+
+#: comment/templates/comment/comments/comment_content.html:19
+#, python-format
+msgid "Edited: %(edited_time)s ago"
+msgstr ""
+
+#: comment/templates/comment/comments/comment_content.html:21
+msgid "Posted"
+msgstr ""
+
+#: comment/templates/comment/comments/comment_content.html:21
+#, python-format
+msgid "%(posted_time)s ago"
+msgstr ""
+
+#: comment/templates/comment/comments/comment_content.html:43
+msgid " Reply"
+msgid_plural " Replies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comment/templates/comment/comments/comment_modal.html:6
+msgid "Confirm comment deletion"
+msgstr ""
+
+#: comment/templates/comment/comments/comment_modal.html:12
+msgid "Are you sure you want to delete this comment"
+msgstr ""
+
+#: comment/templates/comment/comments/comment_modal.html:22
+msgid "Delete"
+msgstr ""
+
+#: comment/templates/comment/comments/content.html:9
+msgid "read more"
+msgstr ""
+
+#: comment/templates/comment/comments/create_comment.html:20
+msgid "Reply"
+msgstr ""
+
+#: comment/templates/comment/comments/create_comment.html:31
+msgid "Comment Anonymously or"
+msgstr ""
+
+#: comment/templates/comment/comments/create_comment.html:33
+#: comment/templates/comment/comments/create_comment.html:40
+msgid "Login"
+msgstr ""
+
+#: comment/templates/comment/comments/create_comment.html:35
+msgid "to keep your conversations intact"
+msgstr ""
+
+#: comment/templates/comment/comments/create_comment.html:42
+msgid "to join the discussion"
+msgstr ""
+
+#: comment/templates/comment/comments/delete_icon.html:3
+msgid "Delete comment"
+msgstr ""
+
+#: comment/templates/comment/comments/edit_icon.html:3
+msgid "Edit comment"
+msgstr ""
+
+#: comment/templates/comment/comments/pagination.html:2
+msgid "Page navigation"
+msgstr ""
+
+#: comment/templates/comment/comments/pagination.html:3
+msgid "first"
+msgstr ""
+
+#: comment/templates/comment/comments/pagination.html:4
+msgid "last"
+msgstr ""
+
+#: comment/templates/comment/comments/pagination.html:5
+msgid "Next"
+msgstr ""
+
+#: comment/templates/comment/comments/pagination.html:6
+msgid "Previous"
+msgstr ""
+
+#: comment/templates/comment/comments/reject_icon.html:3
+msgid "Flag rejected"
+msgstr ""
+
+#: comment/templates/comment/comments/reject_icon.html:3
+msgid "Reject the flag"
+msgstr ""
+
+#: comment/templates/comment/comments/resolve_icon.html:3
+msgid "Flag resolved"
+msgstr ""
+
+#: comment/templates/comment/comments/resolve_icon.html:3
+msgid "Resolve the flag"
+msgstr ""
+
+#: comment/templates/comment/comments/urlhash.html:2
+msgid "Permalink to this comment"
+msgstr ""
+
+#: comment/templates/comment/flags/flag_icon.html:3
+msgid "Remove flag"
+msgstr ""
+
+#: comment/templates/comment/flags/flag_icon.html:3
+msgid "Report comment"
+msgstr ""
+
+#: comment/templates/comment/flags/flag_modal.html:7
+msgid "Please select a reason for flagging"
+msgstr ""
+
+#: comment/templates/comment/flags/flag_modal.html:22
+msgid "Flag"
+msgstr ""
+
+#: comment/templates/comment/flags/flags.html:8
+msgid "flag"
+msgstr ""
+
+#: comment/templates/comment/follow/follow.html:9
+msgid "follow"
+msgstr ""
+
+#: comment/templates/comment/follow/follow_icon.html:3
+msgid "Unfollow this thread"
+msgstr ""
+
+#: comment/templates/comment/follow/follow_icon.html:3
+msgid "Follow this thread"
+msgstr ""
+
+#: comment/templates/comment/follow/follow_modal.html:7
+msgid "Please insert your email to follow this thread"
+msgstr ""
+
+#: comment/templates/comment/follow/follow_modal.html:28
+msgid "Follow"
+msgstr ""
+
+#: comment/templates/comment/notifications/notification.html:6
+#: comment/templates/comment/notifications/notification.txt:2
+msgid "Hey"
+msgstr ""
+
+#: comment/templates/comment/notifications/notification.html:6
+#: comment/templates/comment/notifications/notification.txt:2
+msgid ","
+msgstr ""
+
+#: comment/templates/comment/notifications/notification.html:9
+#: comment/templates/comment/notifications/notification.txt:4
+msgid "has added a comment at"
+msgstr ""
+
+#: comment/templates/comment/notifications/notification.html:9
+#: comment/templates/comment/notifications/notification.txt:4
+msgid "to"
+msgstr ""
+
+#: comment/templates/comment/notifications/notification.html:18
+msgid "Go to site"
+msgstr ""
+
+#: comment/templates/comment/reactions/reactions.html:5
+msgid "like"
+msgstr ""
+
+#: comment/templates/comment/reactions/reactions.html:16
+msgid "dislike"
+msgstr ""

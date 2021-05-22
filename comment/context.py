@@ -2,7 +2,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 from comment.conf import settings
 from comment.messages import ErrorMessage
-from comment.utils import get_request_data, is_comment_moderator, paginate_comments, get_model_obj, has_valid_profile
+from comment.utils import get_user_for_request, get_request_data, is_comment_moderator, paginate_comments, get_model_obj, has_valid_profile
 
 
 class DABContext(dict):
@@ -32,9 +32,25 @@ class DABContext(dict):
         return False
 
     def get_comments(self):
-        comments = self.model_object.comments.filter_parents_by_object(
-            self.model_object, include_flagged=is_comment_moderator(self.request.user)
-        )
+        #comments = self.model_object.comments.filter_parents_by_object(
+        #    self.model_object, include_flagged=True#is_comment_moderator(self.request.user)
+        #)
+        if is_comment_moderator(self.request.user):
+            comments = self.model_object.comments.filter(parent=None)
+        else:
+            comments1 = self.model_object.comments.filter_parents_by_object(
+                self.model_object, include_flagged=False#is_comment_moderator(self.request.user)
+                )
+            comments2 = self.model_object.comments.filter_parents_by_object(
+                self.model_object, include_flagged=True#is_comment_moderator(self.request.user)
+                ).exclude(child=None)
+            user = get_user_for_request(self.request)
+            comments3 = self.model_object.comments.filter_parents_by_object(
+                self.model_object, include_flagged=True
+                ).filter(user=user)
+            comments = comments1 | comments2 | comments3
+            # maybe add a check to exclude comments which only have flagged comments in their child
+            # branchs
         page = get_request_data(self.request, 'page')
         comments_per_page = settings.COMMENT_PER_PAGE
         if comments_per_page:

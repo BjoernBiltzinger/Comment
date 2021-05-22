@@ -17,7 +17,7 @@
 {% else %}
     {% if allowed_flags and comment.user != user %}
         <div class="ml-4">
-            {% include "comment/flags/flags.html" %}
+            <!--{% include "comment/flags/flags.html" %}-->
         </div>
     {% endif %}
     {% if comment.is_base and is_subscription_allowed %}
