@@ -12,7 +12,7 @@ from comment.utils import is_comment_moderator
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, blank=True, null=True,
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,
                              related_name="comment")
     email = models.EmailField(blank=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
