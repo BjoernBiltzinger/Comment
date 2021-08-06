@@ -42,8 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // show and hide child comments
+    let repliesLink = replyLinkElement => {
+        getNthParent(replyLinkElement, 1).nextElementSibling.nextElementSibling.classList.toggle('d-none');
+    };
+
+    // show and hide reply field
     let replyLink = replyLinkElement => {
-        getNthParent(replyLinkElement, 4).nextElementSibling.classList.toggle('d-none');
+        getNthParent(replyLinkElement, 5).nextElementSibling.nextElementSibling.classList.toggle('d-none');
     };
 
     // resize the input field according to typed text
@@ -155,18 +160,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     form.reset();
                     return;
                 }
+                //toogle answers to show
+                let replies = form.parentNode.nextElementSibling;
+                if (replies.classList.contains('d-none')){
+                    replies.classList.remove('d-none');
+                }
+                //add new comment on top
                 let childComment = stringToDom(result.data, '.js-child-comment');
-                form.parentNode.insertBefore(childComment, form.nextSibling);
+                replies.insertBefore(childComment, form.parentNode.nextElementSibling.firstChild);
+                //form.nextSibling);
                 // update number of replies
-                let reply = form.parentElement.previousElementSibling.querySelector(".js-reply-link");
-                let replyNumberElement = form.parentElement.previousElementSibling.querySelector(".js-reply-number");
+                //let reply = form.parentElement.previousElementSibling.querySelector(".js-replies-link");
+
+                let showreplies = form.parentElement.previousElementSibling.querySelector(".js-replies-link");
+                if (showreplies.classList.contains('d-none')){
+                    showreplies.classList.remove('d-none');
+                }
+                let replyNumberElement = showreplies.querySelector(".js-reply-number");
                 let replyNum = Number(replyNumberElement.innerText) + 1;
                 replyNumberElement.textContent = replyNum.toString();
-                if (replyNum > 1) {
-                    reply.textContent = gettext("Replies");
-                } else {
-                    reply.textContent = gettext("Reply");
-                }
+                //if (replyNum > 1) {
+                //    reply.textContent = gettext("Replies");
+                //} else {
+                //    reply.textContent = gettext("Reply");
+                //}
                 commentCount(1);
                 // update followBtn
                 let followButton = form.parentElement.previousElementSibling.querySelector(".js-comment-follow");
@@ -741,6 +758,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideModal(flagModal);
                 hideModal(followModal);
                 hideModal(blockModal);
+            } else if (event.target.closest('.js-replies-link')) {
+                event.preventDefault();
+                repliesLink(event.target);
             } else if (event.target.closest('.js-reply-link')) {
                 event.preventDefault();
                 replyLink(event.target);

@@ -1,7 +1,10 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
 {% load comment_tags %}
 {% load i18n %}
 
-<div id="{{ comment.urlhash }}" class="js-updated-comment {% if comment.has_flagged_state %}flagged-comment {% endif %}{% block content_wrapper_cls %}{% if has_valid_profile %}col-9 col-md-10{% else %}co-11 mx-3{% endif %}{% endblock content_wrapper_cls %}" >
+<div id="{{ comment.urlhash }}" class="js-updated-comment {% if comment.has_flagged_state or comment.deleted %}flagged-comment {% endif %}{% block content_wrapper_cls %}{% if has_valid_profile %}col-9 col-md-10{% else %}co-11 mx-3{% endif %}{% endblock content_wrapper_cls %}">
     {% block comment_content %}
     {% render_content comment user %}
     {% endblock comment_content %}
@@ -35,23 +38,25 @@
                     {% endif %}
                 {% endif %}
             {% endif %}
-            {% if user|can_block_users %}
+            <!--{% if user|can_block_users %}
                 {% include 'comment/block/block_icon.html' %}
-            {% endif %}
-                {% if comment.get_level < 4 %}
-                {% get_replies_count comment user as reply_count %}
-                | <span class="js-reply-number {% block reply_count_cls %}text-dark{% endblock reply_count_cls %}">{{ reply_count }}</span>
-                <a class="js-reply-link btn btn-link" href="#">
-                    {% blocktrans count reply_count=reply_count %} Reply{% plural %} Replies{% endblocktrans %}
-                </a>
+            {% endif %}-->
 
                 {% if comment.user == user and is_subscription_allowed %}
                     <div class="{% block follow_icon_wrapper_cls %}d-inline ml-3{% endblock follow_icon_wrapper_cls %}">
                         {% include 'comment/follow/follow.html' with model_object=comment btnId=comment.id %}
                     </div>
-                    {% endif %}
                 {% endif %}
         </small>
-        {% include "comment/reactions/reactions.html" with comment=comment %}
+        <div style="display:flex;justify-content:space-between;">
+            {% include "comment/reactions/reactions.html" with comment=comment %}
+            {% if comment.get_level < 4 and comment.public  %}
+            <div>
+                <a class="w3-button js-reply-link" href="#">
+                     <i class="fas fa-reply"></i> Antworten
+                </a>
+            </div>
+            {% endif %}
+        </div>
     </div>
 </div>

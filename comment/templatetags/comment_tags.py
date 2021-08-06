@@ -101,8 +101,8 @@ register.inclusion_tag('comment/base.html')(render_comments)
 
 def render_content(comment, user, number=None):
     # check if this comment is deleted
-    if comment.has_flagged_state and not is_comment_moderator(user) and user != comment.user:
-        text_1 = "-------Comment deleted---------"
+    if (comment.has_flagged_state or comment.deleted) and not is_comment_moderator(user) and user != comment.user:
+        text_1 = "-------Kommentar gelöscht---------"
         text_2 = None
     else:
         try:

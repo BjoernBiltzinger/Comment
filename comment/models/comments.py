@@ -136,6 +136,13 @@ class Comment(models.Model):
         return False
 
     @property
+    def public(self):
+        #return True
+        if hasattr(self, 'flag'):
+            return self.flag.state == self.flag.UNFLAGGED or self.flag.state == self.flag.RESOLVED or self.flag.REJECTED
+        return True
+
+    @property
     def has_flagged_state(self):
         if hasattr(self, 'flag'):
             return self.flag.state == self.flag.FLAGGED
@@ -163,3 +170,21 @@ class Comment(models.Model):
     @property
     def num_childs(self):
         return self.child.count()
+
+    @property
+    def is_valid(self):
+        if not self.deleted:
+            return True
+        for child in self.child.all():
+            if child.is_valid:
+                return True
+        return False
+
+    def delete_comment(self):
+        # this deletes this comment if the delete flag is true
+        # and checks if parent comments can also be deleted
+        if self.parent:
+            self.parent.delete_comment()
+        if not self.is_valid:
+            self.delete()
+            

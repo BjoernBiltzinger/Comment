@@ -92,10 +92,13 @@ class DeleteComment(CanDeleteMixin, BaseCommentView):
         # Set the deleted flag, so that we can
         # display a "message deleted" message but still
         # show the replies to the original message
-        #self.comment.deleted = True
+        self.comment.deleted = True
         #print(self.comment.deleted)
-        #self.comment.save()
-        self.comment.delete()
+        self.comment.save()
+        # if this causes the comment to be not valid anymore (if there is no comment below this comment
+        # which is not deleted) delete this comment (and all below)
+        if not self.comment.is_valid:
+            self.comment.delete_comment()
         context = self.get_context_data()
         self.data = render_to_string('comment/comments/base.html', context, request=self.request)
         return UTF8JsonResponse(self.json())
